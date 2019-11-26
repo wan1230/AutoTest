@@ -1,0 +1,38 @@
+启动：
+java -jar ./moco-runner-0.11.0-standalone.jar -p 8888 -c json配置文件
+jar包下载路径：http://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.11.0/
+./moco-runner-0.11.0-standlone.jar：jar包报名
+json配置文件：可以是绝对路径或者相对路径。要是和jar包在同一路径下，可以直接写文件名。
+（相对于java命令的路径）
+端口号不一定是8888，没有被占用的都可以。
+eg:
+java -jar ./moco-runner-0.11.0-standalone.jar -p 8888 -c startup1.json
+执行后：
+Moco Options:
+moco [server type] -p port -c [configuration file]
+
+server type: http, https, socket
+
+--缺少server type
+修改命令:
+java -jar ./moco-runner-0.11.0-standalone.jar http -p 8888 -c startup1.json
+执行结果：
+14 七月 2019 17:08:10 [main] INFO  Server is started at 8888
+14 七月 2019 17:08:10 [main] INFO  Shutdown port is 51384
+
+然后访问接口：http://localhost:8888/demo
+页面显示startup1的response的text：这是第一个mock响应
+7-2 http协议get方法的mock实现
+startupGet.json无参数get请求 等同于startup1.json。 因为默认请求方式为get。
+有参数请求，参数：queries.
+url:http://localhost:8888/getwithparam?name=zhoubapi&age=32
+热部署。
+7-4 post 方法
+浏览器直接访问get请求。post请求需要用到jmeter.
+ 无参数的post。
+ 有请求参数的post
+讲解中，post请求数据用的是queries时，访问接口，jmeter是报错的，Response code: 400。实际操作时我用postman请求并没有报错。jmeter也是报错的。
+换成forms，postman没有返回数据，jmeter是通过的。【待思考】
+post的请求数据要用forms参数，区别于get请求的queries。
+7-6
+带cookies。jmetercookies管理器要要填写域（即域名）+路径（可直接写：/ ）。实际操作是，路径没有填写，请求依然通过了。

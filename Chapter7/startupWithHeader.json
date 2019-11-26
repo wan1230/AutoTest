@@ -1,0 +1,27 @@
+[{
+  "description": "这是一个带header的post请求",
+  "request": {
+    "uri": "/postwithheader",
+    "method": "post",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "cookies": {
+      "login": "true"
+    },
+    "json": {
+      "name": "zhousui",
+      "age": "25"
+    }
+
+
+  },
+  "response": {
+    "status": "200",
+    "json": {
+      "zhousui":"success",
+      "status": "1"
+    }
+  }
+}
+]
