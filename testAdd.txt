@@ -2,4 +2,6 @@ merge demo test t0 branch2
 hello world!
 去掉了冲突的内容
 version1
+version2
+
 
